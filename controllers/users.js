@@ -1,16 +1,13 @@
 // Require necessary NPM package(s)
-
-
+const express = require('express')
 // Require router
-
+const router = express.Router();
 // Set var to path of models (User)
-
-// Require any middleware for error functions and { deconstruct } any functions
-
-// Require any middleware for auth functions and { deconstruct } any functions
+const User = require('../db/models/User')
+// User authentication (bcrypt and createUserToken) go directly below this line
 
 // Set up route
-// INDEX
+// SIGN IN
 // GET api/users
 
 // SHOW
