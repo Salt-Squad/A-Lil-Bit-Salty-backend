@@ -1,14 +1,35 @@
 // Require necessary NPM package(s)
 // Mongoose
+const mongoose = require('mongoose');
+mongoose.Promise = Promise;
 
 // Create a ternary that looks for NODE_ENV and if NODE_ENV is set to 'production', it'll use the URI for the database stored in the 'MONGODB_URI' environment variable. (Otherwise it'll use the local)
-
+let mongoURI = '';
+if (process.env.NODE_ENV === 'production') {
+	mongoURI = process.env.DB_URL;
+} else {
+	mongoURI = 'mongodb://localhost/images';
+}
 
 // Mongoose connection to localhost
+mongoose.connect('mongodb://localhost/images', { useMongoClient: true });
+
 // Include the following:
 // useNewUrlParser: true,
 //     useCreateIndex: true,
 //     useUnifiedTopology: true,
 //     useFindAndModify: false
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+
+mongoose
+	.connect(mongoURI)
+	.then((instance) =>
+		console.log(`Connected to image db: ${instance.connections[0].name}`)
+	)
+	.catch((error) => console.log('Connection failed!', error));
 
 // Export module
+module.exports = mongoose;
