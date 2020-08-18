@@ -6,10 +6,7 @@ const mongoose = require('../db/connection');
 const ImageSchema = new mongoose.Schema({
 	name: String,
 	url: Array,
-	hashtag: [{}],
 });
-
-
 
 // Export module to mongoose ('Image', var for imageSchema)
 module.exports = Image;
