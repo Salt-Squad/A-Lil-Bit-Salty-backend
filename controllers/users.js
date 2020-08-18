@@ -1,24 +1,35 @@
 // Require necessary NPM package(s)
-const express = require('express')
+const express = require('express');
 // Require router
 const router = express.Router();
 // Set var to path of models (User)
-const User = require('../db/models/User')
+const User = require('../db/models/User');
 // User authentication (bcrypt and createUserToken) go directly below this line
 
-// Set up route
+// Set up routes
+
 // SIGN IN
-// GET api/users
+// POST /api/signin
+router.post('/signin', (req, res, next) => {
+	User.findOne({ email: req.body.email })
+		.then((user) => createUserToken(req, user))
+		.then((token) => res.json({ token }))
+		.catch(next);
+});
 
-// SHOW
-// GET api/users/`db _id string here`
+// SIGN UP
+// POST /api/signup
+router.post('/signup', (req, res, next) => {
+    
+});
 
-// CREATE
-// POST api/users
-
+// FUTURE FEATURE
+// USER SELF SELF SERVICE - UPDATE PASSWORD
 // UPDATE
 // PUT api/users/`db _id string here`
 
+// FUTURE FEATURE
+// USER SELF SERVICE - DELETE ACCOUNT
 // DESTROY
 // DELETE api/users/`db _id string here`
 
