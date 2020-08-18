@@ -37,7 +37,7 @@ router.post('/new', (req, res) => {
 
 // UPDATE
 // PUT api/images/`db _id string here`
-router.put('edit/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 	Image.findOneAndUpdate({ _id: req.params.id }, req.body).then(
 		(prevRecord) => {
 			res.json(prevRecord);
