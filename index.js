@@ -28,6 +28,12 @@ app.use('/api/images', imagesController);
 const port = process.env.PORT || 3000;
 
 // Run server on designated port
-app.listen(port, () => {
-	console.log('app is listening on port:', port);
+// app.listen(port, () => {
+// 	console.log('app is listening on port:', port);
+// });
+
+app.set('port', process.env.PORT || 8080);
+
+app.listen(app.get('port'), () => {
+	console.log(`✅ PORT: ${app.get('port')} 🌟`);
 });
