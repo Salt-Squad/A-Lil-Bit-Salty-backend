@@ -1,18 +1,14 @@
 // Require necessary NPM package(s)
 // Mongoose
 const mongoose = require('mongoose');
-mongoose.Promise = Promise;
 
 // Create a ternary that looks for NODE_ENV and if NODE_ENV is set to 'production', it'll use the URI for the database stored in the 'MONGODB_URI' environment variable. (Otherwise it'll use the local)
-let mongoURI = '';
-if (process.env.NODE_ENV === 'production') {
-	mongoURI = process.env.DB_URL;
-} else {
-	mongoURI = 'mongodb://localhost/images';
-}
+let mongoURI = process.env.NODE_ENV === 'production' ?
+ process.env.DB_URL : 'mongodb://localhost/images';
+
 
 // Mongoose connection to localhost
-mongoose.connect('mongodb://localhost/images', { useMongoClient: true });
+mongoose.connect(mongoURI, { useMongoClient: true });
 
 // Include the following:
 // useNewUrlParser: true,

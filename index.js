@@ -25,7 +25,7 @@ app.use('/api/images', imagesController);
 // This is part of middleware that will be part of stretch goals
 
 // Define a port for the API to run on && define a PORT to use if port isn't found. (PORT || 3000)
-const port = process.env.PORT || 3000;
+
 
 // Run server on designated port
 // app.listen(port, () => {
