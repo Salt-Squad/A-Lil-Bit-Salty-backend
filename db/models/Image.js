@@ -1,12 +1,17 @@
 // Require necessary NPM package(s) and point to db connection
 const mongoose = require('../connection');
+const commentSchema = require("../models/Comment")
+
 
 // Set var for imageSchema = new
 // set objects that will be part of the schema
 const ImageSchema = new mongoose.Schema({
 	name: String,
 	url: Array,
-});
+	comments: [
+		commentSchema
+	]
+}, {timestamps: true});
 
 const Image = mongoose.model('Image', ImageSchema);
 
