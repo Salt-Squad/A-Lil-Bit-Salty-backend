@@ -22,9 +22,9 @@ router.get('/', (req, res) => {
 });
 // SHOW
 // GET api/images/`db _id string here`
-router.get('/:name', (req, res) => {
-	const imageName = req.params.name;
-	Image.findOne({ name: imageName })
+router.get('/:id', (req, res) => {
+	const imageId = req.params.id;
+	Image.findOne({ _id: imageId })
 		.populate('comments')
 		.then((image) => {
 			res.json(image);
