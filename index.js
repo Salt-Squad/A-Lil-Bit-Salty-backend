@@ -14,8 +14,6 @@ app.use(express.json());
 
 // urlencoded
 app.use(express.urlencoded({ extended: true }));
-const imageController = require('./controllers/images');
-app.use('/api/images', imageController);
 
 // Require the user resources routes and controllers
 const imagesController = require('./controllers/images');
